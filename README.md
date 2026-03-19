@@ -1,4 +1,4 @@
-﻿# ☕ São Gabriel – E-commerce de Cafés e Assinaturas
+﻿# São Gabriel – E-commerce de Cafés e Assinaturas
 
 ## Descrição
 
