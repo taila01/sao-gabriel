@@ -93,3 +93,6 @@ def home_view(request):
 
 def carrinho_view(request):
     return render(request, 'product/carrinho.html')
+
+def sobre_nos_view(request):
+    return render(request, 'users/sobre_nos.html')

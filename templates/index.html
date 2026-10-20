@@ -26,7 +26,7 @@
       <h2 class="text-2xl font-light mb-1">Experiência <span class="font-semibold">São Gabriel</span></h2>
       <p class="uppercase mb-4 tracking-[3px]">todo mês?</p>
       <h1 class="text-3xl font-bold uppercase">Clube de <span class="italic text-[#E57352]">assinatura</span></h1>
-      <a href="#" class="inline-block mt-8 bg-[#3E2723] hover:bg-[#5D4037] px-8 py-3 rounded-lg text-white uppercase tracking-wide shadow-lg">
+      <a href="#planos" class="inline-block mt-8 bg-[#3E2723] hover:bg-[#5D4037] px-8 py-3 rounded-lg text-white uppercase tracking-wide shadow-lg">
         Assine o clube e tenha vantagens exclusivas!
       </a>
     </div>
@@ -76,7 +76,7 @@
     </div>
   </section>
 
-  <section class="bg-gradient-to-b from-[#FAFAFA] to-white py-16">
+  <section id="planos" class="scroll-mt-32 bg-gradient-to-b from-[#FAFAFA] to-white py-16">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <h2 class="text-2xl font-semibold mb-10">Escolha seu plano de assinatura</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -89,7 +89,7 @@
             <li>✅ Desconto de 10% na loja</li>
             <li>✅ Envio mensal com rastreio</li>
           </ul>
-          <a href="#" class="block w-full bg-[#A0522D] hover:bg-[#8B4513] text-white py-2 rounded-lg transition">Assinar Agora</a>
+          <a href="{% url 'product:listar_produtos' %}" class="block w-full bg-[#A0522D] hover:bg-[#8B4513] text-white py-2 rounded-lg transition">Assinar Agora</a>
         </div>
 
         <div class="border-2 border-[#A0522D] rounded-2xl shadow-lg p-8 bg-white scale-105">
@@ -102,7 +102,7 @@
             <li>✅ Desconto de 15% na loja</li>
             <li>✅ Frete grátis no Sudeste</li>
           </ul>
-          <a href="#" class="block w-full bg-[#A0522D] hover:bg-[#8B4513] text-white py-2 rounded-lg transition">Assinar Agora</a>
+          <a href="{% url 'product:listar_produtos' %}" class="block w-full bg-[#A0522D] hover:bg-[#8B4513] text-white py-2 rounded-lg transition">Assinar Agora</a>
         </div>
 
         <div class="border rounded-2xl shadow-md p-8 bg-white">
@@ -114,7 +114,7 @@
             <li>✅ Desconto de 20% na loja</li>
             <li>✅ Acesso ao grupo VIP</li>
           </ul>
-          <a href="#" class="block w-full bg-[#A0522D] hover:bg-[#8B4513] text-white py-2 rounded-lg transition">Assinar Agora</a>
+          <a href="{% url 'product:listar_produtos' %}" class="block w-full bg-[#A0522D] hover:bg-[#8B4513] text-white py-2 rounded-lg transition">Assinar Agora</a>
         </div>
       </div>
     </div>

@@ -16,12 +16,19 @@
     </a>
   </div>
 
-  <h1 class="text-3xl font-bold mb-8">Lista de Produtos</h1>
+  <h1 class="text-3xl font-bold mb-8">{% if kits %}Kits Especiais{% else %}Nossos Cafés{% endif %}</h1>
+  <form id="busca" method="get" action="{% url 'product:listar_produtos' %}" class="flex flex-wrap gap-3 mb-8 scroll-mt-32">
+    {% if kits %}<input type="hidden" name="tipo" value="kits">{% endif %}
+    <label for="q" class="sr-only">Buscar produtos</label>
+    <input id="q" name="q" value="{{ busca }}" placeholder="Buscar por nome ou descrição" class="border rounded px-4 py-2">
+    <button type="submit" class="bg-[#4E342E] text-white rounded px-4 py-2">Buscar</button>
+    <a href="{% url 'product:listar_produtos' %}" class="px-4 py-2 underline">Ver todos</a>
+  </form>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     {% for p in produtos %}
       <div class="border rounded-lg p-4 bg-white shadow">
-        <h3 class="text-xl font-semibold mb-2">{{ p.name }}</h3>
+        <h3 class="text-xl font-semibold mb-2"><a href="{% url 'product:detalhe_produto' p.id_product %}">{{ p.name }}</a></h3>
         <p class="text-gray-600 mb-3">{{ p.description }}</p>
         <p class="text-green-600 font-bold mb-4">R$ {{ p.price }}</p>
         <a href="{% url 'store:adicionar_ao_carrinho' p.id_product %}" class="inline-block bg-brown-600 text-white px-4 py-2 rounded hover:bg-brown-700">

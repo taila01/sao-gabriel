@@ -6,7 +6,7 @@ urlpatterns = [
     path('', include('store.urls')),    
     path('users/', include('users.urls')),
     path('products/', include('product.urls')),
-    path('store/', include('store.urls')),
+    path('store/', include('store.urls', namespace='store_legacy')),
     path('payment/', include('payment.urls')),
     path('app_admin/', include('app_admin.urls')),
         

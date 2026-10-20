@@ -2,7 +2,6 @@
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="{% url 'store:index' %}" class="flex items-center gap-3">
       <div class="w-12 h-12 bg-gradient-to-br from-[#A0522D] to-[#2E7D32] rounded-full flex items-center justify-center shadow-md">
-        <img src="cafe.png" alt="cafe" width="500" height="600">
         <svg xmlns="http://www.w3.org/2000/svg" 
              fill="none" 
              viewBox="0 0 24 24" 
@@ -20,14 +19,13 @@
     </a>
     <nav class="hidden md:flex items-center gap-8">
       <a href="{% url 'store:index' %}" class="hover:text-[#A0522D] uppercase text-sm font-semibold">Home</a>
-      <a href="#" class="hover:text-[#A0522D] uppercase text-sm font-semibold">Sobre Nós</a>
+      <a href="{% url 'users:sobre_nos' %}" class="hover:text-[#A0522D] uppercase text-sm font-semibold">Sobre Nós</a>
       <a href="{% url 'product:listar_produtos' %}" class="hover:text-[#A0522D] uppercase text-sm font-semibold">Nossos Cafés</a>
-      <a href="#" class="hover:text-[#A0522D] uppercase text-sm font-semibold">Kits Especiais</a>
-      <a href="#" class="hover:text-[#A0522D] uppercase text-sm font-semibold">Blog</a>
-      <a href="#" class="hover:text-[#A0522D] uppercase text-sm font-semibold">Contato</a>
+      <a href="{% url 'product:listar_produtos' %}?tipo=kits" class="hover:text-[#A0522D] uppercase text-sm font-semibold">Kits Especiais</a>
+      <a href="#contato" class="hover:text-[#A0522D] uppercase text-sm font-semibold">Contato</a>
     </nav>
     <div class="flex items-center gap-5">
-      <button class="hover:text-[#A0522D]" aria-label="Buscar">
+      <a href="{% url 'product:listar_produtos' %}#busca" class="hover:text-[#A0522D]" aria-label="Buscar">
         <svg xmlns="http://www.w3.org/2000/svg" 
              fill="none" 
              viewBox="0 0 24 24" 
@@ -37,8 +35,8 @@
           <path stroke-linecap="round" stroke-linejoin="round" 
                 d="M21 21l-4.35-4.35m1.85-5.4a7.25 7.25 0 11-14.5 0 7.25 7.25 0 0114.5 0z" />
         </svg>
-      </button>
-      {% if request.session.is_custom_authenticated %}
+      </a>
+      {% if request.session.user_id %}
           <a href="{% url 'users:perfil' %}" class="nav-link">
             <button class="hover:text-[#A0522D]" aria-label="Usuário">
               <svg xmlns="http://www.w3.org/2000/svg" 
@@ -85,4 +83,11 @@
       </a>
     </div>
   </div>
+  <nav class="md:hidden flex gap-5 overflow-x-auto px-6 pb-4 text-xs uppercase font-semibold" aria-label="Navegação no celular">
+    <a href="{% url 'store:index' %}">Home</a>
+    <a href="{% url 'users:sobre_nos' %}" class="whitespace-nowrap">Sobre Nós</a>
+    <a href="{% url 'product:listar_produtos' %}" class="whitespace-nowrap">Nossos Cafés</a>
+    <a href="{% url 'product:listar_produtos' %}?tipo=kits" class="whitespace-nowrap">Kits Especiais</a>
+    <a href="#contato">Contato</a>
+  </nav>
 </header>
