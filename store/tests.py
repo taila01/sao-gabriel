@@ -48,6 +48,6 @@ class NavegacaoClubeTests(SimpleTestCase):
             'itens': [item], 'subtotal': Decimal('79.90'),
             'frete': 0, 'total_compra': Decimal('79.90'),
         }, request=request)
-        self.assertIn(reverse('product:imagem_catalogo', args=['clube-v1']), html)
+        self.assertIn(reverse('product:imagem_catalogo', args=['clube-v2']), html)
         self.assertIn(reverse('store:aumentar_quantidade', args=[7]), html)
         self.assertIn(reverse('store:remover_produto', args=[7]), html)

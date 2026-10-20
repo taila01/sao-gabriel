@@ -20,7 +20,7 @@ class Product(models.Model):
 
     @property
     def imagem_catalogo(self):
-        return {2: 'kit-v1', 3: 'clube-v1'}.get(self.fk_category_id, 'cafe-v1')
+        return {2: 'kit-v1', 3: 'clube-v2'}.get(self.fk_category_id, 'cafe-v1')
 
     def __str__(self):
         return self.name

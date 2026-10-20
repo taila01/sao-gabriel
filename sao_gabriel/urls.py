@@ -3,6 +3,7 @@ from django.urls import path, include
 from product import views as product_views
 
 urlpatterns = [
+    path("favicon.svg", product_views.favicon, name="favicon"),
     path('', include('store.urls')),    
     path('users/', include('users.urls')),
     path('products/', include('product.urls')),

@@ -43,13 +43,23 @@ def detalhe_produto(request, product_id):
 
 
 def imagem_catalogo(request, imagem):
-    """Entrega somente as três imagens locais permitidas, inclusive na Vercel."""
+    """Entrega somente as imagens locais permitidas, inclusive na Vercel."""
     from pathlib import Path
     from django.http import FileResponse, Http404
 
-    if imagem not in {'cafe-v1', 'kit-v1', 'clube-v1'}:
+    if imagem not in {'cafe-v1', 'kit-v1', 'clube-v1', 'clube-v2'}:
         raise Http404('Imagem não encontrada.')
     caminho = Path(__file__).resolve().parent / 'assets' / 'catalogo' / f'{imagem}.png'
     resposta = FileResponse(caminho.open('rb'), content_type='image/png')
+    resposta['Cache-Control'] = 'public, max-age=86400'
+    return resposta
+
+
+def favicon(request):
+    from pathlib import Path
+    from django.http import FileResponse
+
+    caminho = Path(__file__).resolve().parent / 'assets' / 'catalogo' / 'favicon-cafe.svg'
+    resposta = FileResponse(caminho.open('rb'), content_type='image/svg+xml')
     resposta['Cache-Control'] = 'public, max-age=86400'
     return resposta

@@ -35,3 +35,16 @@ two upright matte ivory coffee bags, one forest green label and one warm caramel
 ```text
 an open kraft subscription box with two ivory coffee bags with forest green labels reading only 'SÃO GABRIEL', thoughtful minimal coffee subscription packaging
 ```
+
+## Nova imagem do clube
+
+`clube-v2.png` substitui a imagem do clube nas páginas. Criada com a ferramenta
+integrada image_gen, preservando `clube-v1.png` como versão anterior.
+
+Prompt final:
+
+```text
+Use case: product-mockup. Asset type: square coffee subscription catalog photo, replacement for an overly close cropped box photo. Create original São Gabriel premium coffee subscription packaging. A compact kraft gift box with its lid open, two small matte cream coffee pouches inside, forest green minimal labels with only the exact text 'SÃO GABRIEL'. Camera pulled BACK, a flattering three-quarter angle slightly above tabletop, show the complete box, entire lid and complete pouches with plenty of empty cream background on ALL sides. The entire box and lid must occupy no more than 65 percent of frame width AND height; at least 15 percent clear margins all around. No part cut off, no tall looming lid. Warm ivory tabletop and seamless beige plaster background, very sparse scattered coffee beans and softly blurred green leaves far in background. Soft natural window lighting, elegant subtle leaf shadow, realistic paper texture, refined commercial product photography. Calm warm cream, caramel and forest green palette. No watermarks, no people, no other brands, no certification or origin claims. Square image.
+```
+
+`favicon-cafe.svg` é um ícone vetorial de xícara, desenhado em código para a aba do navegador.
