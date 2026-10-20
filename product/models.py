@@ -14,6 +14,11 @@ class Product(models.Model):
         db_table = 'product'
 
     @property
+    def informacoes_catalogo(self):
+        from .catalogo import INFORMACOES_PRODUTOS
+        return INFORMACOES_PRODUTOS.get(self.name, {})
+
+    @property
     def imagem_catalogo(self):
         return {2: 'kit-v1', 3: 'clube-v1'}.get(self.fk_category_id, 'cafe-v1')
 

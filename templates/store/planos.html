@@ -1,0 +1,11 @@
+<div class="sg-plan-grid">
+{% for plano in planos_clube %}
+<article class="sg-plan {% if plano.name == 'Clube Premium' %}featured{% endif %}">
+  <p class="sg-plan-label">{{ plano.informacoes_catalogo.chamada }}</p>
+  <h3>{{ plano.informacoes_catalogo.rotulo }}</h3>
+  <p class="sg-price">R$ {{ plano.price|floatformat:2 }} <small>/ ciclo</small></p>
+  <ul><li>{{ plano.informacoes_catalogo.peso }}</li><li>{{ plano.informacoes_catalogo.conteudo }}</li><li>Compra de um ciclo por pedido</li><li>Sem renovação automática</li></ul>
+  <a class="sg-btn {% if plano.name != 'Clube Premium' %}sg-btn-outline{% endif %}" href="{% url 'product:detalhe_produto' plano.id_product %}">Conhecer este plano ↗</a>
+</article>
+{% empty %}<div class="sg-empty"><h3>Os planos estão sendo preparados.</h3><a class="sg-textlink" href="{% url 'product:listar_produtos' %}">Explorar catálogo</a></div>{% endfor %}
+</div>

@@ -10,17 +10,23 @@ from product.models import Product
 from store.utils.cart_utils import get_cart_data, add_to_cart 
 from payment.services import create_mp_preference 
 
+def planos_do_clube():
+    nomes = ['Clube Básico', 'Clube Premium', 'Clube Master']
+    produtos = {p.name: p for p in Product.objects.filter(fk_category_id=3, name__in=nomes)}
+    return [produtos[nome] for nome in nomes if nome in produtos]
+
+
 def index_home(request):
-    planos = {produto.name: produto for produto in Product.objects.filter(
-        fk_category_id=3,
-        name__in=['Clube Básico', 'Clube Premium', 'Clube Master'],
-    )}
-    context = {
-        'plano_basico': planos.get('Clube Básico'),
-        'plano_premium': planos.get('Clube Premium'),
-        'plano_master': planos.get('Clube Master'),
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html', {'planos_clube': planos_do_clube()})
+
+
+def clube_view(request):
+    return render(request, 'store/clube.html', {'planos_clube': planos_do_clube()})
+
+
+def ajuda_view(request):
+    return render(request, 'store/ajuda.html')
+
 
 def carrinho_view(request):
     cart_data = get_cart_data(request)
