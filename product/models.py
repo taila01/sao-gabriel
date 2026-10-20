@@ -13,6 +13,10 @@ class Product(models.Model):
         managed = True
         db_table = 'product'
 
+    @property
+    def imagem_catalogo(self):
+        return {2: 'kit-v1', 3: 'clube-v1'}.get(self.fk_category_id, 'cafe-v1')
+
     def __str__(self):
         return self.name
 
