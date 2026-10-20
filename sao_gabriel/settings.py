@@ -1,6 +1,12 @@
+import os
 from pathlib import Path
 
+import environ
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# O ambiente da hospedagem tem prioridade sobre o arquivo local.
+environ.Env.read_env(BASE_DIR / ".env", overwrite=False)
 
 
 # Quick-start development settings - unsuitable for production
@@ -10,9 +16,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6x)t22)01f#v8m^la2(l58xtx_af(dh^%%nok@#%!k!wcyad$%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "False" if os.environ.get("VERCEL") else "True").lower() == "true"
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '127.0.0.1:8000']
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get(
+        "DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,sao-gabriel-blue.vercel.app"
+    ).split(",")
+    if host.strip()
+]
+if os.environ.get("VERCEL_URL"):
+    ALLOWED_HOSTS.append(os.environ["VERCEL_URL"])
 
 
 # Application definition
@@ -97,18 +111,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sao_gabriel.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'bd_coffee', 
-        'USER': 'taila', 
-        'PASSWORD': 'taila', 
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-        
-        }
+    "default": {
+        "ENGINE": "sao_gabriel.db.backends.mysql",
+        "NAME": os.environ.get("DB_NAME", "bd_coffee"),
+        "USER": os.environ.get("DB_USER", "taila"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", ""),
+        "HOST": os.environ.get("DB_HOST", "localhost"),
+        "PORT": os.environ.get("DB_PORT", "3306"),
+        "OPTIONS": {"use_pure": True},
     }
 }
+
+# Aiven exige TLS; valide a CA e a identidade do servidor.
+_db_ssl_ca = os.environ.get("DB_SSL_CA")
+if not _db_ssl_ca and (BASE_DIR / "ca.pem").is_file():
+    _db_ssl_ca = str(BASE_DIR / "ca.pem")
+if _db_ssl_ca:
+    DATABASES["default"]["OPTIONS"].update({
+        "ssl_ca": str(BASE_DIR / _db_ssl_ca),
+        "ssl_disabled": False,
+        "ssl_verify_cert": True,
+        "ssl_verify_identity": True,
+    })
 
 
 # Password validation
