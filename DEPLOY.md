@@ -55,3 +55,11 @@ Documentação do backend: https://dev.mysql.com/doc/connector-python/en/connect
 O backend local corrige a citação de literais no editor de schema do Connector/Python
 9.7.0, necessária para a constraint de UID não vazio do social-auth. As migrações
 de terceiros não são alteradas ou marcadas artificialmente como aplicadas.
+
+## Catálogo demonstrativo
+
+Execute `.venv/bin/python manage.py popular_catalogo` para cadastrar quatro cafés,
+dois kits e três opções do clube. O comando preserva produtos existentes e pode
+ser executado novamente sem duplicar os nomes cadastrados. Categorias: 1 = cafés,
+2 = kits, 3 = clube. Os itens e preços são demonstrativos; a compra de um plano
+no carrinho representa um ciclo e não ativa cobrança recorrente.
