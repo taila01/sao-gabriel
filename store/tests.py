@@ -19,9 +19,9 @@ class NavegacaoClubeTests(SimpleTestCase):
     def test_clube_mostra_conteudo_e_destino_sem_promessas_nao_implementadas(self, planos):
         planos.return_value = [self.plano]
         response = self.client.get(reverse('store:clube'))
-        self.assertContains(response, '250g por ciclo')
+        self.assertContains(response, '250g por mês')
         self.assertContains(response, reverse('product:detalhe_produto', args=[7]))
-        self.assertContains(response, 'Sem renovação automática')
+        self.assertContains(response, 'Renovação mensal automática')
         self.assertNotContains(response, '10%')
         self.assertNotContains(response, 'Frete grátis no Sudeste')
         self.assertContains(response, reverse('store:ajuda'))
@@ -35,7 +35,7 @@ class NavegacaoClubeTests(SimpleTestCase):
     def test_ajuda_esclarece_limites_de_entrega_e_recorrencia(self):
         response = self.client.get(reverse('store:ajuda'))
         self.assertContains(response, 'Ainda não há entrega real')
-        self.assertContains(response, 'sem cobrança ou renovação automática')
+        self.assertContains(response, 'a renovação é automática')
 
     def test_carrinho_mostra_foto_e_preserva_controles(self):
         request = RequestFactory().get('/carrinho/')
