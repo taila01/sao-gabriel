@@ -183,3 +183,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # --- Configurações do Mercado Pago (Sandbox/Teste) ---
 MP_ACCESS_TOKEN = 'APP_USR-2201546978636815-111017-c7629d7e22017f3b3ad4ca670d35e378-2979950899'
+# Usa o registro padrão de django.contrib.sites nas telas de autenticação.
+SITE_ID = int(os.environ.get("DJANGO_SITE_ID", "1"))

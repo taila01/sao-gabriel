@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ title }} | São Gabriel{% endblock %}
+{% block extrastyle %}{{ block.super }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root,html[data-theme="light"]{--primary:#34493b;--secondary:#34493b;--accent:#e6d6b8;--primary-fg:#fffdf9;--body-fg:#30251f;--body-bg:#f8f5ee;--body-quiet-color:#796e63;--body-loud-color:#30251f;--header-color:#e6d6b8;--header-branding-color:#f8f5ee;--header-bg:#34493b;--header-link-color:#f8f5ee;--breadcrumbs-fg:#f8f5ee;--breadcrumbs-link-fg:#e6d6b8;--breadcrumbs-bg:#34493b;--link-fg:#704b32;--link-hover-color:#a35e38;--link-selected-fg:#34493b;--hairline-color:#e2d9cb;--border-color:#d6cabb;--darkened-bg:#efe8dc;--selected-bg:#e7dfd2;--selected-row:#ede4d4;--button-bg:#34493b;--button-hover-bg:#24352b;--default-button-bg:#34493b;--default-button-hover-bg:#24352b;--close-button-bg:#796e63;--close-button-hover-bg:#584d43;--font-family-primary:'DM Sans',sans-serif}
+body{font-family:'DM Sans',sans-serif}h1,#site-name{font-family:'Playfair Display',Georgia,serif}#site-name a{font-size:25px}#header{padding-top:22px;padding-bottom:22px}.module{border-radius:6px;overflow:hidden}.button,input[type=submit]{border-radius:4px}
+</style>{% endblock %}
+{% block branding %}<div id="site-name"><a href="{% url 'admin:index' %}">São Gabriel · Administração</a></div>{% endblock %}
+{% block nav-global %}{% endblock %}

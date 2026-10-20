@@ -7,6 +7,14 @@ class RegisterForm(forms.ModelForm):
     class Meta:
         model = Users
         fields = ['name', 'birth', 'cpf', 'telephone', 'email', 'password']
+        labels = {
+            'name': 'Nome completo',
+            'birth': 'Data de nascimento',
+            'cpf': 'CPF',
+            'telephone': 'Telefone',
+            'email': 'E-mail',
+            'password': 'Senha',
+        }
         widgets = {
             'birth': forms.DateInput(attrs={'type': 'date'}),
             'telephone': forms.TextInput(attrs={'type': 'tel', 'placeholder': 'DDD+Número'}),

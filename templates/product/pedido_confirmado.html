@@ -1,13 +1,1 @@
-{% include 'nav.html' %}
-{% block content %}
-
-<h2>Pedido #{{ order.id_order }}</h2>
-
-<p>Obrigado pela compra, {{ request.session.user_name }}.</p>
-<p>O número do seu pedido é <strong>#{{ order.id_order }}</strong>.</p>
-<p>Status: {{ order.status }}</p>
-<p>Total: R$ {{ order.total|floatformat:2 }}</p>
-
-<a href="{% url 'product:listar_produtos' %}">Voltar à loja</a>
-
-{% endblock %}
+{% extends 'base_cafe.html' %}{% block title %}Seu pedido — São Gabriel{% endblock %}{% block content %}<section class="sg-container sg-page"><div class="sg-panel sg-result"><div class="sg-result-mark" aria-hidden="true">✓</div><p class="sg-eyebrow">SEU PEDIDO</p><h1>Obrigado pela sua escolha.</h1><p>{{ status_mensagem|default:'Confira abaixo as informações do seu pedido.' }}</p><div class="sg-summary-row"><span>Pedido</span><strong>#{% firstof order.pk order.id_order %}</strong></div><div class="sg-summary-row"><span>Status</span><strong>{% firstof order.get_status_pagamento_display order.status %}</strong></div><div class="sg-summary-row sg-total"><span>Total</span><strong>R$ {{ order.total|floatformat:2 }}</strong></div><div class="sg-actions"><a class="sg-btn" href="{% url 'product:listar_produtos' %}">Voltar aos cafés ↗</a></div></div></section>{% endblock %}

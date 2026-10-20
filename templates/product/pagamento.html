@@ -1,10 +1,4 @@
-{% include 'nav.html' %}
-{% block content %}
-
-<h2 class="text-center text-xl font-semibold mb-4">Finalizar Pagamento</h2>
-<p class="text-center">Total: <strong>R$ {{ total_compra|floatformat:2 }}</strong></p>
-
-<script src="https://sdk.mercadopago.com/js/v2"></script>
+{% extends 'base_cafe.html' %}{% block title %}Pagamento — São Gabriel{% endblock %}{% block content %}<section class="sg-container sg-page"><div class="sg-panel sg-result"><p class="sg-eyebrow">ÚLTIMA ETAPA</p><h1>Finalize seu pagamento.</h1><p>Total: R$ {{ total_compra|floatformat:2 }}</p><script src="https://sdk.mercadopago.com/js/v2"></script>
 <div id="wallet_container" class="mt-6 flex justify-center"></div>
 
 <script>
@@ -22,4 +16,4 @@
     });
 </script>
 
-{% endblock %}
+</div></section>{% endblock %}
